@@ -10,8 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 public class HawaianPizza extends Margherita implements BaseForPizza {
 	private String ingredientHawaian;
 
-	public HawaianPizza(String ingredients, int calories, double price, Size size) {
-		super(ingredients, calories, price, size);
+	public HawaianPizza(Size size) {
+		super(size);
 
 		this.ingredientHawaian = ingredients + ", ham,pineapple";
 
@@ -52,6 +52,12 @@ public class HawaianPizza extends Margherita implements BaseForPizza {
 			return Size.STANDARD;
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Hawaian Pizza (" + this.ingredientHawaian + "), Size: " + this.getSize() + ", Calories: "
+				+ this.getCalories() + ", Price: " + this.getCalories() + " $";
 	}
 
 }

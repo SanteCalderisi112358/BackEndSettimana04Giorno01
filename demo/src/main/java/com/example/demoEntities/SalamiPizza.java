@@ -11,8 +11,8 @@ public class SalamiPizza extends Margherita implements BaseForPizza {
 
 	private String ingredientSalami;
 
-	public SalamiPizza(String ingredients, int calories, double price, Size size) {
-		super(ingredients, calories, price, size);
+	public SalamiPizza(Size size) {
+		super(size);
 		this.ingredientSalami = ingredients + ", salami";
 	}
 
@@ -54,6 +54,12 @@ public class SalamiPizza extends Margherita implements BaseForPizza {
 			return Size.STANDARD;
 		}
 
+	}
+
+	@Override
+	public String toString() {
+		return "Salami Pizza (" + this.ingredientSalami + "), Size: " + this.getSize() + ", Calories: "
+				+ this.getCalories() + ", Price: " + this.getCalories() + " $";
 	}
 
 }

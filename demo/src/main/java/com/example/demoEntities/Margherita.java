@@ -1,17 +1,21 @@
 package com.example.demoEntities;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@AllArgsConstructor
+
 @Setter
 @Getter
 public class Margherita implements BaseForPizza {
-	private String ingredients = "tomato,cheese";
+	protected String ingredients = "tomato,cheese";
 	private int calories;
 	private double price;
 	protected Size size;
+
+	public Margherita(Size size) {
+		super();
+		this.size = size;
+	}
 	@Override
 	public String getNamePizza() {
 
@@ -47,5 +51,14 @@ public class Margherita implements BaseForPizza {
 		}
 
 	}
+
+	@Override
+	public String toString() {
+		return "Margherita Pizza (" + this.ingredients + "), Size: " + this.size + ", Calories: " + this.getCalories()
+				+ ", Price: "
+				+ this.getPrice() + " $";
+	}
+
+
 
 }
