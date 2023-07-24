@@ -8,12 +8,10 @@ import lombok.Setter;
 @Getter
 public class Margherita implements BaseForPizza {
 	protected String ingredients = "tomato,cheese";
-	private int calories;
-	private double price;
 	protected Size size;
 
 	public Margherita(Size size) {
-		super();
+
 		this.size = size;
 	}
 	@Override

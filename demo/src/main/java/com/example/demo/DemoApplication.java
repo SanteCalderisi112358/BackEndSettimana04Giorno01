@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import com.example.demoEntities.Ham;
+import com.example.demoEntities.Lemonade;
+import com.example.demoEntities.Margherita;
+import com.example.demoEntities.Water;
+import com.example.demoEntities.Wine;
+
 import lombok.extern.slf4j.Slf4j;
 
 @SpringBootApplication
@@ -68,6 +74,36 @@ public class DemoApplication {
 		System.out.println("**********");
 		System.out.println(ctx.getBean("getMug").toString());
 		System.out.println("**********");
+
+		/* ORDINAZIONE */
+		System.err.println("Ordinazione: ");
+		Margherita pizza = (Margherita) ctx.getBean("getMargheritaFamily");
+		int quantityPizza = 1;
+		double pizzaPrice = quantityPizza * pizza.getPrice();
+
+		int quantityHam = 2;
+		Ham ham = (Ham) ctx.getBean("getHam");
+		double hamPrice = quantityHam * ham.getPriceTopping();
+
+		Water water = (Water) ctx.getBean("getWater");
+		int quantityWater = 2;
+		double waterPrice = quantityWater * water.getPriceDrink();
+
+		Lemonade lemonade = (Lemonade) ctx.getBean("getLemonade");
+		int quantityLemonade = 2;
+		double lemonadePrice = quantityLemonade * lemonade.getPriceDrink();
+
+		Wine wine = (Wine) ctx.getBean("getWine");
+		int quantityWine = 1;
+		double winePrice = quantityWine * wine.getPriceDrink();
+
+		double total = pizzaPrice + lemonadePrice + waterPrice + winePrice + hamPrice;
+		System.out.println(quantityPizza + " " + pizza.getNamePizza() + " " + pizza.getSize() + ", with " + quantityHam
+				+ " " + ham.getNameTopping()
+				+ ", " + quantityWater + " " + water.getNameDrink() + ", " + quantityLemonade + " "
+				+ lemonade.getNameDrink() + ", " + quantityWine + " " + wine.getNameDrink());
+		System.out.printf("Total price: %.2f $", total);
+
 
 		ctx.close();
 	}
