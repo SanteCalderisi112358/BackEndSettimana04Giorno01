@@ -80,29 +80,31 @@ public class DemoApplication {
 		Margherita pizza = (Margherita) ctx.getBean("getMargheritaFamily");
 		int quantityPizza = 1;
 		double pizzaPrice = quantityPizza * pizza.getPrice();
-
+		double pizzaCalories = quantityPizza * pizza.getCalories();
 		int quantityHam = 2;
 		Ham ham = (Ham) ctx.getBean("getHam");
 		double hamPrice = quantityHam * ham.getPriceTopping();
-
+		double hamCalories = quantityHam * ham.getCaloriesTopping();
 		Water water = (Water) ctx.getBean("getWater");
 		int quantityWater = 2;
 		double waterPrice = quantityWater * water.getPriceDrink();
-
+		double waterCalories = quantityWater * water.getCaloriesDrink();
 		Lemonade lemonade = (Lemonade) ctx.getBean("getLemonade");
 		int quantityLemonade = 2;
 		double lemonadePrice = quantityLemonade * lemonade.getPriceDrink();
-
+		double lemonadeCalories = quantityLemonade * lemonade.getCaloriesDrink();
 		Wine wine = (Wine) ctx.getBean("getWine");
 		int quantityWine = 1;
 		double winePrice = quantityWine * wine.getPriceDrink();
-
-		double total = pizzaPrice + lemonadePrice + waterPrice + winePrice + hamPrice;
+		double wineCalories = quantityWine * wine.getCaloriesDrink();
+		double totalPrice = pizzaPrice + lemonadePrice + waterPrice + winePrice + hamPrice;
+		double totalCalories = pizzaCalories + lemonadeCalories + waterCalories + wineCalories + hamCalories;
 		System.out.println(quantityPizza + " " + pizza.getNamePizza() + " " + pizza.getSize() + ", with " + quantityHam
 				+ " " + ham.getNameTopping()
 				+ ", " + quantityWater + " " + water.getNameDrink() + ", " + quantityLemonade + " "
 				+ lemonade.getNameDrink() + ", " + quantityWine + " " + wine.getNameDrink());
-		System.out.printf("Total price: %.2f $", total);
+		System.out.printf("Total price: %.2f $\n", totalPrice);
+		System.out.printf("Toral calories: %.2f kcal", totalCalories);
 
 
 		ctx.close();
