@@ -28,7 +28,8 @@ public class Wine implements Drink {
 
 	@Override
 	public String toString() {
-		return this.getNameDrink() + "(" + this.getSizeDrink() + "L)" + ", Calories: " + this.getCaloriesDrink()
+		return this.getNameDrink() + "(" + this.getSizeDrink() + "L," + this.getAlcool() + "%)" + ", Calories: "
+				+ this.getCaloriesDrink()
 				+ " kcal" + ", Price: " + this.getPriceDrink() + " $";
 	}
 }
