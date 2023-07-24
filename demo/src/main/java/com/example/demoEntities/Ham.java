@@ -19,7 +19,7 @@ public class Ham implements Topping {
 
 	@Override
 	public String toString() {
-		return this.getNameTopping() + ", Calories: " + this.getCaloriesTopping() + ", Price: "
-				+ this.getPriceTopping();
+		return this.getNameTopping() + ", Calories: " + this.getCaloriesTopping() + " kcal" + ", Price: "
+				+ this.getPriceTopping() + " $";
 	}
 }

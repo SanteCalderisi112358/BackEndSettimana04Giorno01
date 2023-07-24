@@ -59,7 +59,7 @@ public class SalamiPizza extends Margherita implements BaseForPizza {
 	@Override
 	public String toString() {
 		return "Salami Pizza (" + this.ingredientSalami + "), Size: " + this.getSize() + ", Calories: "
-				+ this.getCalories() + ", Price: " + this.getCalories() + " $";
+				+ this.getCalories() + " kcal" + ", Price: " + this.getPrice() + " $";
 	}
 
 }

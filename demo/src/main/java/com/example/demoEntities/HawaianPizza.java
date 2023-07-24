@@ -56,7 +56,7 @@ public class HawaianPizza extends Margherita implements BaseForPizza {
 	@Override
 	public String toString() {
 		return "Hawaian Pizza (" + this.ingredientHawaian + "), Size: " + this.getSize() + ", Calories: "
-				+ this.getCalories() + ", Price: " + this.getCalories() + " $";
+				+ this.getCalories() + " kcal" + ", Price: " + this.getPrice() + " $";
 	}
 
 }

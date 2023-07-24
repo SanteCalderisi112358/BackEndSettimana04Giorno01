@@ -22,13 +22,18 @@ public class Margherita implements BaseForPizza {
 
 	@Override
 	public double getCalories() {
+		double calories;
 		if (this.size == Size.STANDARD) {
-			return 1104;
+			calories = 1104;
 		} else {
-			return 1104 * 1.94;
+			calories = 1104 * 1.94;
 		}
 
+		calories = Math.round(calories * 100.0) / 100.0;
+
+		return calories;
 	}
+
 
 	@Override
 	public double getPrice() {
@@ -52,10 +57,12 @@ public class Margherita implements BaseForPizza {
 
 	@Override
 	public String toString() {
+
 		return "Margherita Pizza (" + this.ingredients + "), Size: " + this.size + ", Calories: " + this.getCalories()
-				+ ", Price: "
-				+ this.getPrice() + " $";
+				+ " kcal"
+				+ ", Price: " + getPrice() + " $";
 	}
+
 
 
 

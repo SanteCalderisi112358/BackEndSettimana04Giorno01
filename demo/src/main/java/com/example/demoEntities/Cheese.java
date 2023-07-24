@@ -20,6 +20,7 @@ public class Cheese implements Topping {
 
 	@Override
 	public String toString() {
-		return getNameTopping() + ", Calories: " + getCaloriesTopping() + ", Price: " + getPriceTopping();
+		return this.getNameTopping() + ", Calories: " + this.getCaloriesTopping() + " kcal" + ", Price: "
+				+ this.getPriceTopping() + " $";
 	}
 }

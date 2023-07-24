@@ -25,6 +25,7 @@ public class Lemonade implements Drink {
 	@Override
 	public String toString() {
 		return this.getNameDrink() + "(" + this.getSizeDrink() + "L)" + ", Calories: " + this.getCaloriesDrink()
+				+ " kcal"
 				+ ", Price: " + this.getPriceDrink() + " $";
 	}
 }
