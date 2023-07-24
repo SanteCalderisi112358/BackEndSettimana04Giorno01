@@ -13,7 +13,7 @@ public class HawaianPizza extends Margherita implements BaseForPizza {
 	public HawaianPizza(Size size) {
 		super(size);
 
-		this.ingredientHawaian = ingredients + ", ham,pineapple";
+		this.ingredientHawaian = ingredients + ", ham, pineapple";
 
 	}
 

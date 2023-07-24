@@ -36,4 +36,29 @@ public class BeansConfiguration {
 	SalamiPizza getSalamiPizzaStandard() {
 		return new SalamiPizza(Size.STANDARD);
 	}
+
+	@Bean
+	Cheese getCheese() {
+		return new Cheese();
+	}
+
+	@Bean
+	Ham getHam() {
+		return new Ham();
+	}
+
+	@Bean
+	Onions getOnion() {
+		return new Onions();
+	}
+
+	@Bean
+	Salami getSalami() {
+		return new Salami();
+	}
+
+	@Bean
+	Pineapple getPineapple() {
+		return new Pineapple();
+	}
 }
