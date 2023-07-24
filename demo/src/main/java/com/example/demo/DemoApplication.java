@@ -28,7 +28,9 @@ public class DemoApplication {
 //		log.info(ctx.getBean("getFe").toString());
 //
 //		log.info(ctx.getBean("getInterviewer").toString());
-		System.out.println("Pizzas");
+
+		System.out.println("\n");
+		System.out.println("Pizzas:");
 
 		System.out.println(ctx.getBean("getMargheritaFamily").toString());
 		System.out.println("**********");
@@ -52,6 +54,19 @@ public class DemoApplication {
 		System.out.println(ctx.getBean("getSalami").toString());
 		System.out.println("**********");
 		System.out.println(ctx.getBean("getPineapple").toString());
+		System.out.println("**********\n");
+
+		System.out.println("Drinks:");
+		System.out.println(ctx.getBean("getLemonade").toString());
+		System.out.println("**********");
+		System.out.println(ctx.getBean("getWater").toString());
+		System.out.println("**********");
+		System.out.println(ctx.getBean("getWine").toString());
+		System.out.println("**********\n");
+		System.out.println("Franchise:");
+		System.out.println(ctx.getBean("getShirt").toString());
+		System.out.println("**********");
+		System.out.println(ctx.getBean("getMug").toString());
 		System.out.println("**********");
 
 		ctx.close();

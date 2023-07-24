@@ -61,4 +61,29 @@ public class BeansConfiguration {
 	Pineapple getPineapple() {
 		return new Pineapple();
 	}
+
+	@Bean
+	Water getWater() {
+		return new Water();
+	}
+
+	@Bean
+	Lemonade getLemonade() {
+		return new Lemonade();
+	}
+
+	@Bean
+	Wine getWine() {
+		return new Wine();
+	}
+
+	@Bean
+	Shirt getShirt() {
+		return new Shirt();
+	}
+
+	@Bean
+	Mug getMug() {
+		return new Mug();
+	}
 }
