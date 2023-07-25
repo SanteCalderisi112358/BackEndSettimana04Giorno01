@@ -86,4 +86,34 @@ public class BeansConfiguration {
 	Mug getMug() {
 		return new Mug();
 	}
+
+	@Bean
+	Table getTable01() {
+		return new Table(StateTable.LIBERO, 1, 4);
+	}
+
+	@Bean
+	Table getTable02() {
+		return new Table(StateTable.OCCUPATO, 2, 5);
+	}
+
+	@Bean
+	Table getTable03() {
+		return new Table(StateTable.LIBERO, 3, 6);
+	}
+
+	@Bean
+	Table getTable04() {
+		return new Table(StateTable.OCCUPATO, 4, 10);
+	}
+
+	@Bean
+	Table getTable05() {
+		return new Table(StateTable.LIBERO, 5, 15);
+	}
+
+	@Bean
+	Ordering getOrdering01() {
+		return new Ordering(1, "Pizza no Gluten", getTable01());
+	}
 }
