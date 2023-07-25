@@ -1,17 +1,29 @@
-package com.example.demoEntities;
+package com.example.demo;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.example.demo.DemoApplication;
+import com.example.demoEntities.Ham;
+import com.example.demoEntities.Lemonade;
+import com.example.demoEntities.Margherita;
+import com.example.demoEntities.Ordering;
+import com.example.demoEntities.Water;
+import com.example.demoEntities.Wine;
+import com.example.demoTools.CustomMath;
 
-public class IsPositiveTest {
-	AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class CustomMathTests {
 	@Value("${application.coperto}")
 	private double coperto;
+	AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
+
 	Ordering order01 = (Ordering) ctx.getBean("getOrdering01");
 	int numberPeople = order01.getNumberPeople();
 
@@ -39,10 +51,34 @@ public class IsPositiveTest {
 	double totalCalories = pizzaCalories + lemonadeCalories + waterCalories + wineCalories + hamCalories;
 	double totalCoperto = numberPeople * coperto;
 
+
+
 	@Test
-	void testIsPositive() {
-		IsPositive isPositive = new IsPositive();
-		double result = isPositive.sum(totalCoperto, totalPrice);
+	void testPositive() {
+		CustomMath cm = new CustomMath();
+		double result = cm.sum(totalCoperto, totalPrice);
 		assertTrue(result > 0);
+
+	}
+
+	@Test
+	void testPizzaNotNull() {
+		CustomMath cm = new CustomMath();
+		Margherita pizzaNotNull = cm.pizzaNotNull(pizza);
+		assertNotNull(pizzaNotNull);
+	}
+
+	@Test
+	void testWaterNotCalories() {
+		CustomMath cm = new CustomMath();
+		int resultWaterCalories = cm.waterNotCalories(water.getCaloriesDrink());
+		assertTrue(resultWaterCalories == 0);
+	}
+
+	@Test
+	void testAlcoolWine() {
+		CustomMath cm = new CustomMath();
+		int resulAlcool = cm.alcoolWine(wine.getAlcool());
+		assertFalse(resulAlcool < 0);
 	}
 }
