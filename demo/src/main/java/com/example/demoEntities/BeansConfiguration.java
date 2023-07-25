@@ -1,5 +1,7 @@
 package com.example.demoEntities;
 
+import java.time.LocalTime;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -114,6 +116,6 @@ public class BeansConfiguration {
 
 	@Bean
 	Ordering getOrdering01() {
-		return new Ordering(1, "Pizza no Gluten", getTable01());
+		return new Ordering(1, "Pizza NO Gluten", getTable01(), 3, LocalTime.of(20, 22, 12));
 	}
 }

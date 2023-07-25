@@ -1,6 +1,8 @@
 package com.example.demoEntities;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -14,20 +16,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Order(2)
 @NoArgsConstructor
-public class OrderingTable implements CommandLineRunner {
+@SpringBootApplication
 
+public class OrderingTable implements CommandLineRunner {
+	@Value("${application.coperto}")
+	private double coperto;
 	@Override
 	public void run(String... args) throws Exception {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
-
+		/* ORDINAZIONE */
 		System.out.println("**********");
 		System.out.println("Ordering");
 		Ordering order01 = (Ordering) ctx.getBean("getOrdering01");
-		/* ORDINAZIONE */
-
-		System.err.println("Ordinazione: ");
-		System.err.println(order01.toString());
-		Margherita pizza = (Margherita) ctx.getBean("getMargheritaFamily");
+		int numberPeople = order01.getNumberPeople();
+		log.info("Ordinazione: ");
+		log.info(order01.toString());
+		Margherita pizza = (Margherita) ctx.getBean("getSalamiPizzaFamily");
 		int quantityPizza = 1;
 		double pizzaPrice = quantityPizza * pizza.getPrice();
 		double pizzaCalories = quantityPizza * pizza.getCalories();
@@ -49,11 +53,16 @@ public class OrderingTable implements CommandLineRunner {
 		double wineCalories = quantityWine * wine.getCaloriesDrink();
 		double totalPrice = pizzaPrice + lemonadePrice + waterPrice + winePrice + hamPrice;
 		double totalCalories = pizzaCalories + lemonadeCalories + waterCalories + wineCalories + hamCalories;
-		System.err.println(quantityPizza + " " + pizza.getNamePizza() + " " + pizza.getSize() + ", with " + quantityHam
+		double totalCoperto = numberPeople * coperto;
+
+		log.info(quantityPizza + " " + pizza.getNamePizza() + " " + pizza.getSize() + ", with " + quantityHam
 				+ " " + ham.getNameTopping() + ", " + quantityWater + " " + water.getNameDrink() + ", "
 				+ quantityLemonade + " " + lemonade.getNameDrink() + ", " + quantityWine + " " + wine.getNameDrink());
-		System.err.printf("Total price: %.2f $\n", totalPrice);
-		System.err.printf("Toral calories: %.2f kcal", totalCalories);
+		log.info("Cover: " + totalCoperto + " $");
+		log.info("Total price Order: " + totalPrice + " $");
+		double total = totalCoperto + totalPrice;
+		log.info("Total Price (" + totalPrice + "$) and cover(" + totalCoperto + " $) = " + total + " $");
+		log.info("Total calories: " + totalCalories + " kcal");
 		ctx.close();
 	}
 
