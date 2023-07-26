@@ -153,7 +153,7 @@ public class BeansConfiguration {
 
 	@Bean
 	Ordering getOrdering01() {
-		return new Ordering(1, "sparkling water", getTable(), 4, LocalTime.of(20, 32), getPizzasOrdering01(),
+		return new Ordering(1, "sparkling water", getTable01(), 4, LocalTime.of(20, 32), getPizzasOrdering01(),
 				getDrinksOrdering01(), getToppingsOrdering01());
 	}
 

@@ -84,6 +84,7 @@ public class TakeTable implements CommandLineRunner {
 		table10.setStateTable(StateTable.OCCUPATO);
 		System.out.println(table10.toString());
 		table10.checkTable();
+		System.out.println("**********");
 
 		ctx.close();
 	}

@@ -32,8 +32,8 @@ public class OrderingTable implements CommandLineRunner {
 
 		// ORDINAZIONE 01//
 		Ordering ordering01 = (Ordering) ctx.getBean("getOrdering01");
-		ordering01.setTable(new Table(StateTable.LIBERO, 1, 10));
-		System.err.println(ordering01.toString());
+		// ordering01.setTable(new Table(StateTable.LIBERO, 1, 10));
+		System.out.println(ordering01.toString());
 		totalPrice(ordering01);
 
 		// ORDINAZIONE 02//
@@ -43,7 +43,7 @@ public class OrderingTable implements CommandLineRunner {
 		table02.setNumberTable(7);
 		table02.setStateTable(StateTable.LIBERO);
 		ordering02.setTable(table02);
-		System.err.println(ordering02.toString());
+		System.out.println(ordering02.toString());
 		totalPrice(ordering02);
 
 		// ORDINAZIONE03//
@@ -69,7 +69,7 @@ public class OrderingTable implements CommandLineRunner {
 		ordering03.setTable(new Table(StateTable.LIBERO, 3, 6));
 		ordering03.setTime(LocalTime.of(21, 05));
 		ordering03.setCover(coperto);
-		System.err.println(ordering03.toString());
+		System.out.println(ordering03.toString());
 		totalPrice(ordering03);
 		ctx.close();
 	}
