@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public interface Drink {
+public interface IDrink {
 	public String getNameDrink();
 
 	public double getSizeDrink();

@@ -6,14 +6,13 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class HawaianPizza extends Margherita implements BaseForPizza {
-	private String ingredientHawaian;
+public class HawaianPizza extends AbPizza implements IPizza {
+
+
+	private String ingredientHawaian = ingredients + ", ham, pineapple";
 
 	public HawaianPizza(Size size) {
 		super(size);
-
-		this.ingredientHawaian = ingredients + ", ham, pineapple";
-
 	}
 
 
@@ -58,5 +57,7 @@ public class HawaianPizza extends Margherita implements BaseForPizza {
 		return "Hawaian Pizza (" + this.ingredientHawaian + "), Size: " + this.getSize() + ", Calories: "
 				+ this.getCalories() + " kcal" + ", Price: " + this.getPrice() + " $";
 	}
+
+
 
 }

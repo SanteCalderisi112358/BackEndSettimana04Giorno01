@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public class Salami implements Topping {
+public class Salami extends AbTopping implements ITopping {
 
 	@Override
 	public String getNameTopping() {

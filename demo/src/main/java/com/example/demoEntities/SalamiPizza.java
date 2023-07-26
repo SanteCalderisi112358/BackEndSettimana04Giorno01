@@ -7,17 +7,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Setter
 @Getter
-public class SalamiPizza extends Margherita implements BaseForPizza {
+public class SalamiPizza extends AbPizza implements IPizza {
 
-	private String ingredientSalami;
+	private String ingredientSalami = ingredients + ", salami";
 
 	public SalamiPizza(Size size) {
 		super(size);
-		this.ingredientSalami = ingredients + ", salami";
 	}
-
-
-
 
 
 	@Override
@@ -61,6 +57,8 @@ public class SalamiPizza extends Margherita implements BaseForPizza {
 		return "Salami Pizza (" + this.ingredientSalami + "), Size: " + this.getSize() + ", Calories: "
 				+ this.getCalories() + " kcal" + ", Price: " + this.getPrice() + " $";
 	}
+
+
 
 }
 

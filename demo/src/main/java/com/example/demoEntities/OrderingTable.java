@@ -1,5 +1,9 @@
 package com.example.demoEntities;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,46 +29,65 @@ public class OrderingTable implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
-		/* ORDINAZIONE */
-		System.out.println("**********");
-		System.out.println("Ordering");
-		Ordering order01 = (Ordering) ctx.getBean("getOrdering01");
-		int numberPeople = order01.getNumberPeople();
-		System.out.println("Ordinazione: ");
-		System.out.println(order01.toString());
-		Margherita pizza = (Margherita) ctx.getBean("getSalamiPizzaFamily");
-		int quantityPizza = 1;
-		double pizzaPrice = quantityPizza * pizza.getPrice();
-		double pizzaCalories = quantityPizza * pizza.getCalories();
-		int quantityHam = 2;
-		Ham ham = (Ham) ctx.getBean("getHam");
-		double hamPrice = quantityHam * ham.getPriceTopping();
-		double hamCalories = quantityHam * ham.getCaloriesTopping();
-		Water water = (Water) ctx.getBean("getWater");
-		int quantityWater = 2;
-		double waterPrice = quantityWater * water.getPriceDrink();
-		double waterCalories = quantityWater * water.getCaloriesDrink();
-		Lemonade lemonade = (Lemonade) ctx.getBean("getLemonade");
-		int quantityLemonade = 2;
-		double lemonadePrice = quantityLemonade * lemonade.getPriceDrink();
-		double lemonadeCalories = quantityLemonade * lemonade.getCaloriesDrink();
-		Wine wine = (Wine) ctx.getBean("getWine");
-		int quantityWine = 1;
-		double winePrice = quantityWine * wine.getPriceDrink();
-		double wineCalories = quantityWine * wine.getCaloriesDrink();
-		double totalPrice = pizzaPrice + lemonadePrice + waterPrice + winePrice + hamPrice;
-		double totalCalories = pizzaCalories + lemonadeCalories + waterCalories + wineCalories + hamCalories;
-		double totalCoperto = numberPeople * coperto;
 
-		System.err.println(quantityPizza + " " + pizza.getNamePizza() + " " + pizza.getSize() + ", with " + quantityHam
-				+ " " + ham.getNameTopping() + ", " + quantityWater + " " + water.getNameDrink() + ", "
-				+ quantityLemonade + " " + lemonade.getNameDrink() + ", " + quantityWine + " " + wine.getNameDrink());
-		System.err.println("Cover: " + totalCoperto + " $");
-		System.err.printf("Total price Order: %.2f $\n", totalPrice);
-		double total = totalCoperto + totalPrice;
-		System.err.printf("Total Price ( %.2f $) and cover(" + totalCoperto + " $) = %.2f $\n", totalPrice, total);
-		System.err.println("Total calories: " + totalCalories + " kcal");
+		// ORDINAZIONE 01//
+		Ordering ordering01 = (Ordering) ctx.getBean("getOrdering01");
+		ordering01.setTable(new Table(StateTable.LIBERO, 1, 10));
+		System.err.println(ordering01.toString());
+		totalPrice(ordering01);
+
+		// ORDINAZIONE 02//
+		Ordering ordering02 = (Ordering) ctx.getBean("getOrdering02");
+		Table table02 = (Table) ctx.getBean("getTable");
+		table02.setMaxOccupancy(5);
+		table02.setNumberTable(7);
+		table02.setStateTable(StateTable.LIBERO);
+		ordering02.setTable(table02);
+		System.err.println(ordering02.toString());
+		totalPrice(ordering02);
+
+		// ORDINAZIONE03//
+		Ordering ordering03 = (Ordering) ctx.getBean("getOrdering");
+		ordering03.setNumberPeople(4);
+		List<AbDrink> drinksList = new ArrayList<AbDrink>();
+		drinksList.add(new Water());
+		drinksList.add(new Wine());
+		drinksList.add(new Lemonade());
+		ordering03.setDrinksOrdered(drinksList);
+		List<AbPizza> pizzasList = new ArrayList<AbPizza>();
+		pizzasList.add(new Margherita(Size.STANDARD));
+		pizzasList.add(new SalamiPizza(Size.FAMILY));
+		pizzasList.add(new HawaianPizza(Size.STANDARD));
+		ordering03.setPizzasOrdered(pizzasList);
+		List<AbTopping> toppingsList = new ArrayList<AbTopping>();
+		toppingsList.add(new Onions());
+		toppingsList.add(new Ham());
+		toppingsList.add(new Pineapple());
+		ordering03.setToppingsOrdered(toppingsList);
+		ordering03.setNote("No TOMATO");
+		ordering03.setNumberOrder(3);
+		ordering03.setTable(new Table(StateTable.LIBERO, 3, 6));
+		ordering03.setTime(LocalTime.of(21, 05));
+		ordering03.setCover(coperto);
+		System.err.println(ordering03.toString());
+		totalPrice(ordering03);
 		ctx.close();
+	}
+
+	static void totalPrice(Ordering ordered) {
+
+		double cover = ordered.getCover();
+		double totalPrice = ordered.getTotalPrice();
+		double totalCalories = ordered.getTotalCalories();
+		int people = ordered.getNumberPeople();
+		double totaleCover = people * cover;
+		double total = totaleCover + totalPrice;
+		System.out.println("Cover: " + totaleCover + " $");
+		System.out.printf("Price Food And Beverage: %.2f $\n", totalPrice);
+		System.out.printf("Total Price: %.2f $\n", total);
+		System.out.printf("Total Calories: %.2f kcal\n", totalCalories);
+		System.out.println("**********");
+
 	}
 
 }

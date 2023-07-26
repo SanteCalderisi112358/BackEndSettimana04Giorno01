@@ -16,11 +16,7 @@ public class DemoApplication {
 	}
 
 	public static void configWithConfigAnnotation() {
-//		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DemoApplication.class);
-//
-//
-//
-//		ctx.close();
+
 	}
 
 }

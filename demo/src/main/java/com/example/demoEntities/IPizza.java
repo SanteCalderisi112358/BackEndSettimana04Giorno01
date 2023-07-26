@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public interface BaseForPizza {
+public interface IPizza {
 
 	public String getNamePizza();
 

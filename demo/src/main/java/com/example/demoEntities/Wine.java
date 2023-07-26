@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public class Wine implements Drink {
+public class Wine extends AbDrink implements IDrink {
 
 	@Override
 	public String getNameDrink() {

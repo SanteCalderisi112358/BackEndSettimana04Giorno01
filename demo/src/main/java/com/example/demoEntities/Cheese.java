@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public class Cheese implements Topping {
+public class Cheese extends AbTopping implements ITopping {
 
 	@Override
 	public String getNameTopping() {

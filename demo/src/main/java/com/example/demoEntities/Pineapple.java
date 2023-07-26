@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public class Pineapple implements Topping {
+public class Pineapple extends AbTopping implements ITopping {
 
 	@Override
 	public String getNameTopping() {

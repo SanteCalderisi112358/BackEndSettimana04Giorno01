@@ -6,14 +6,15 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class Margherita implements BaseForPizza {
-	protected String ingredients = "tomato,cheese";
-	protected Size size;
+public class Margherita extends AbPizza implements IPizza {
+
+
 
 	public Margherita(Size size) {
+		super(size);
 
-		this.size = size;
 	}
+
 	@Override
 	public String getNamePizza() {
 

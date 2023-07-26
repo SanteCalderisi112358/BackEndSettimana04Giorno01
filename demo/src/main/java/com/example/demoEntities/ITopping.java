@@ -1,6 +1,6 @@
 package com.example.demoEntities;
 
-public interface Topping {
+public interface ITopping {
 	public String getNameTopping();
 
 	public int getCaloriesTopping();
