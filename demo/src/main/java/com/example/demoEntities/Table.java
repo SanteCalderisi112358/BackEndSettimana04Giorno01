@@ -1,7 +1,5 @@
 package com.example.demoEntities;
 
-import org.springframework.stereotype.Component;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +8,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Getter
-@Component
+
 public class Table {
 	private StateTable stateTable;
 	private int numberTable;

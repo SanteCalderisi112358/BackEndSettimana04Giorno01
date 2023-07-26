@@ -1,5 +1,8 @@
 package com.example.demoEntities;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Ham extends AbTopping implements ITopping {
 
 	@Override
